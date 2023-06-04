@@ -2,6 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 	<link rel="shortcut icon" type="image/ico" href="https://raw.iqiq.io/ymh0000123/lingyunshu.github.io/main/20230603181819.jpg">
 	<script src="https://mcapi.us/scripts/minecraft.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
@@ -94,6 +98,8 @@
             alert('复制失败，请手动复制');
         }
     }
+</script>
+<script>
     MinecraftAPI.getServerStatus('sc-cd-1.locyan.com', {
         port: 25684
     }, function (err, status) {
@@ -116,18 +122,58 @@
         // 显示服务器状态
         document.getElementById("server-name").innerHTML = "服务器版本: " + name.server.name;
     });
+</script>
 
+<style>
+		body {
+			background: url("https://pan.ovome.icu/f/eL8CG/21.x264.aac.mp4") no-repeat center center fixed;
+			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			filter: alpha(opacity=60);
+			opacity: 1;
+		}
+		
+		video {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -100;
+			transform: translateX(-50%) translateY(-50%);
+			background: url("https://pan.ovome.icu/f/eL8CG/21.x264.aac.mp4") no-repeat center center;
+			background-size: cover; 
+			transition: 1s opacity;
+		}
 
-
+		video::before {
+			content: "";
+			position: absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			background: rgba(0,0,0,0.5);
+			z-index: -1;
+		}
+		
+</style>
 
 </script>
 </head>
 <body>
 	<div class="banner">
-		<h1 class="icon-heading">凌云寺</h1>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
+		<video id="bgvid" autoplay loop muted>
+		<source src="https://pan.ovome.icu/f/eL8CG/21.x264.aac.mp4" type="video/mp4">
+	    </video>
+		<h1 class="el-icon-coin">凌云寺</h1>
 		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('sc-cd-1.locyan.com:25684')">sc-cd-1.locyan.com:25684</a></p>
 	</div>
-	
 	<div class="container">
 		<h2>服务器简介</h2>
 		<p class="description">欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>

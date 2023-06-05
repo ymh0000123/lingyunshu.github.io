@@ -105,7 +105,7 @@
     }, function (err, status) {
         if (err) {
             // 如果发生错误，显示错误消息
-            document.getElementById("server-status").innerHTML = "服务器信息: 无法获取";
+            document.getElementById("server-status").innerHTML = "西南-成都-1号服务器信息: 无法获取";
             return console.error(err);
         }
         // 显示服务器状态
@@ -116,11 +116,35 @@
     },function (err, name) {
         if (err) {
             // 如果发生错误，显示错误消息
-            document.getElementById("server-name").innerHTML = "服务器信息: 无法获取";
+            document.getElementById("server-name").innerHTML = "西南-成都-1号服务器信息: 无法获取";
             return console.error(err);
         }
         // 显示服务器状态
         document.getElementById("server-name").innerHTML = "服务器版本: " + name.server.name;
+    });
+</script>
+<script>
+    MinecraftAPI.getServerStatus('ddns.ganshity.top', {
+        port: 36894
+    }, function (err, status) {
+        if (err) {
+            // 如果发生错误，显示错误消息
+            document.getElementById("server-status-2").innerHTML = "西南-成都-1号服务器信息: 无法获取";
+            return console.error(err);
+        }
+        // 显示服务器状态
+        document.getElementById("players-now-2").innerHTML = "服务器在线人数: " + status.players.now + "/" + status.players.max;
+    });
+	MinecraftAPI.getServerStatus('ddns.ganshity.top', {
+        port: 36894
+    },function (err, name) {
+        if (err) {
+            // 如果发生错误，显示错误消息
+            document.getElementById("server-name-2").innerHTML = "西南-成都-1号服务器信息: 无法获取";
+            return console.error(err);
+        }
+        // 显示服务器状态
+        document.getElementById("server-name-2").innerHTML = "服务器版本: " + name.server.name;
     });
 </script>
 
@@ -172,14 +196,17 @@
 		<source src="https://pan.ovome.icu/f/eL8CG/21.x264.aac.mp4" type="video/mp4">
 	    </video>
 		<h1 class="el-icon-coin">凌云寺</h1>
-		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('sc-cd-1.locyan.com:25684')">sc-cd-1.locyan.com:25684</a></p>
+		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('sc-cd-1.locyan.com:25684')">西南-成都-1号 sc-cd-1.locyan.com:25684</a></p>
+		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('ddns.ganshity.top:36894')">华中-崇阳-1号 ddns.ganshity.top:36894</a></p>
 	</div>
 	<div class="container">
 		<h2>服务器简介</h2>
 		<p class="description">欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>
 		<h2>服务器信息</h2>
 		<div id="players-now"></div>
-		<div id="server-name"></div>
+		<div id="server-name"></div><p>
+		<div id="players-now-2"></div>
+		<div id="server-name-2"></div>
 		<h2 class="rules">服务器规则</h2>
 		<ul class="rule">
 			<li>不使用外挂。</li>

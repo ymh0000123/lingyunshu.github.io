@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+  <script src="https://mcapi.us/scripts/minecraft.js"></script>
+</head>
+<body>
+  <div id="app">
+    <el-progress type="dashboard" :percentage="percentage" color="green"></el-progress>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+  <script>
+
+    MinecraftAPI.getServerStatus('ddns.ganshity.top', {
+        port: 36894
+    }, function (err, status) {
+        if (err) {
+            // 如果发生错误，显示错误消息
+            document.getElementById("status.players").innerHTML = 0;
+            return console.error(err);
+        }
+        // 显示服务器状态
+        document.getElementById("status.players").innerHTML = status.players.now;
+    });
+	
+	    const app = Vue.createApp({
+      data() {
+        return {
+          percentage: status.players
+        }
+      }
+    })
+    app.use(ElementPlus)
+    app.mount('#app')
+</script>
+<div id="status.players"></div>
+</body>
+</html>

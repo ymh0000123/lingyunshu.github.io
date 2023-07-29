@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
   <title>服务器状态仪表盘</title>
   <link rel="shortcut icon" type="image/ico" href="20230603181819.png">
   <style>
@@ -10,37 +12,37 @@
       color: #fff;
       padding: 10px;
     }
-    
+
     .navbar h1 {
       margin: 0;
       font-size: 20px;
     }
-    
+
     /* 主体容器样式 */
     .container {
       margin: 20px;
     }
-    
+
     /* 服务器状态样式 */
     .status {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 10px;
     }
-    
+
     /* 服务器信息样式 */
     .server-info {
       font-size: 18px;
       margin-bottom: 10px;
     }
-    
+
     /* 服务器IP样式 */
     #serverIP {
       font-size: 16px;
       color: #3b984d;
       cursor: pointer;
     }
-    
+
     /* 页脚样式 */
     footer {
       margin-top: 20px;
@@ -48,33 +50,38 @@
       font-size: 14px;
       color: #888;
     }
-		.container h2 {
-			color: #000000;
-			font-size: 24px;
-			margin-top: 0;
-		}
-		.container .description {
-			color: #777777;
-			font-size: 18px;
-			line-height: 1.5;
-			margin: 20px 0;
-		}
-		.container .rules {
-			color: #EE6666;
-			font-size: 18px;
-			margin-top: 40px;
-		}
-		.container .rule {
-			padding-left: 20px;
-			background-image: url(rule-icon.png);
-			background-repeat: no-repeat;
-			background-position: left center;
-		}
+
+    .container h2 {
+      color: #000000;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .container .description {
+      color: #777777;
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 20px 0;
+    }
+
+    .container .rules {
+      color: #EE6666;
+      font-size: 18px;
+      margin-top: 40px;
+    }
+
+    .container .rule {
+      padding-left: 20px;
+      background-image: url(rule-icon.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
   </style>
 </head>
+
 <body>
   <div class="navbar">
-    <h1>我的世界服务器状态 QQ群：819798794</h1>
+    <h1>我的世界服务器状态</h1>
   </div>
   <div class="container">
     <div class="status" id="status">正在加载状态...</div>
@@ -84,25 +91,31 @@
     <div class="server-info" id="serverIP">服务器IP: </div>
   </div>
   <div class="container">
-	<h2>服务器简介</h2>
-	<p class="description">欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>
+    <h2>服务器简介</h2>
+    <p class="description">
+      欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>
     <h2>服务器规则</h2>
-		<ul>
-			<li>不使用外挂。</li>
-			<li>不要在他人的建筑物、资源领地进行恶意破坏。</li>
-			<li>不要滥用管理员命令。</li>
-		</ul>
+    <ul>
+      <li>不使用外挂。</li>
+      <li>不要在他人的建筑物、资源领地进行恶意破坏。</li>
+      <li>不要滥用管理员命令。</li>
+    </ul>
     <h2>关于服务器</h2>
-		<ul>
-			<li>原服主：<a href="https://space.bilibili.com/1429428251">wyh_zkx</a></li>
-			<li>现服主：<a href="https://space.bilibili.com/1199407206">老孙12号</a></li>
-			<li>网页设计：<a href="https://space.bilibili.com/1783868793">没用的小废鼠</a>&<a href="https://chat-shared2.zhile.io/shared.html">CHatGpt</a></li>
-		</ul>
-	</div>
+    <ul>
+      <li>原服主：<a href="https://space.bilibili.com/1429428251">wyh_zkx</a></li>
+      <li>现服主：<a href="https://space.bilibili.com/1199407206">老孙12号</a></li>
+      <li>网页设计：<a href="https://space.bilibili.com/1783868793">没用的小废鼠</a>&<a
+          href="https://chat-shared2.zhile.io/shared.html">CHatGpt</a></li>
+	  <li>QQ群：819798794</li>
+    </ul>
+  </div>
   <footer>
     如有问题请联系管理员：
     QQ: 2539171968 / QQ: 3464484696
   </footer>
+  
+
+  
   <script>
     // 使用 JavaScript 获取服务器状态和信息
     function getServerStatus() {
@@ -177,4 +190,5 @@
     document.addEventListener('DOMContentLoaded', getServerStatus);
   </script>
 </body>
+
 </html>

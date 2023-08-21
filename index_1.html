@@ -1,225 +1,196 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-	<link rel="shortcut icon" type="image/ico" href="20230603181819.png">
-	<script src="https://mcapi.us/scripts/minecraft.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-	<title>凌云寺 - Minecraft服务器介绍</title>
-	<style>
-		/* 横幅样式 */
-		.banner {
-			background-color: #181818;
-			padding: 20px;
-			text-align: center;
-		}
-		.banner h1 {
-			color: #FFFFFF;
-			font-size: 36px;
-			margin: 0;
-		}
-		.banner p {
-			color: #FFFFFF;
-			font-size: 18px;
-			margin: 10px 0;
-		}
-		
-		/* 服务器简介样式 */
-		.container {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #FFFFFF;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0,0,0,0.1);
-		}
-		.container h2 {
-			color: #000000;
-			font-size: 24px;
-			margin-top: 0;
-		}
-		.container .description {
-			color: #777777;
-			font-size: 18px;
-			line-height: 1.5;
-			margin: 20px 0;
-		}
-		.container .rules {
-			color: #EE6666;
-			font-size: 18px;
-			margin-top: 40px;
-		}
-		.container .rule {
-			padding-left: 20px;
-			background-image: url(rule-icon.png);
-			background-repeat: no-repeat;
-			background-position: left center;
-		}
-		
-		/* 在线玩家信息样式 */
-		.footer {
-			background-color: #181818;
-			padding: 20px;
-			text-align: center;
-		}
-		.footer p {
-			color: #FFFFFF;
-			font-size: 18px;
-			margin: 0;
-		}
-		a {
-          color: #fff;
-          text-decoration: none;
-		}
-		.icon-heading::before {
-        font-family: "Font Awesome 5 Free";
-        content: "\f51c";
-        font-weight: 900;
-        margin-right: 10px;
+  <meta charset="UTF-8">
+  <title>服务器状态仪表盘</title>
+  <link rel="shortcut icon" type="image/ico" href="20230603181819.png">
+  <style>
+    /* 导航栏样式 */
+    .navbar {
+      background-color: #3b984d;
+      color: #fff;
+      padding: 10px;
     }
-}
-	</style>
-	<script>
-	function copyToClipboard(text) {
-        var input = document.createElement('input');
-        input.setAttribute('value', text);
-        document.body.appendChild(input);
-        input.select();
-        var result = document.execCommand('copy');
-        document.body.removeChild(input);
 
-        if (result) {
-            alert('已经复制到剪贴板');
-        } else {
-            alert('复制失败，请手动复制');
-        }
+    .navbar h1 {
+      margin: 0;
+      font-size: 20px;
     }
-</script>
-<script>
-    MinecraftAPI.getServerStatus('sc-cd-1.locyan.com', {
-        port: 25684
-    }, function (err, status) {
-        if (err) {
-            // 如果发生错误，显示错误消息
-            document.getElementById("server-status").innerHTML = "西南-成都-1号服务器信息: 无法获取";
-            return console.error(err);
-        }
-        // 显示服务器状态
-        document.getElementById("players-now").innerHTML = "服务器在线人数: " + status.players.now + "/" + status.players.max;
-    });
-	MinecraftAPI.getServerStatus('sc-cd-1.locyan.com', {
-        port: 25684
-    },function (err, name) {
-        if (err) {
-            // 如果发生错误，显示错误消息
-            document.getElementById("server-name").innerHTML = "西南-成都-1号服务器信息: 无法获取";
-            return console.error(err);
-        }
-        // 显示服务器状态
-        document.getElementById("server-name").innerHTML = "服务器版本: " + name.server.name;
-    });
-</script>
-<script>
-    MinecraftAPI.getServerStatus('ddns.ganshity.top', {
-        port: 36894
-    }, function (err, status) {
-        if (err) {
-            // 如果发生错误，显示错误消息
-            document.getElementById("server-status-2").innerHTML = "华中-崇阳-1号服务器信息: 无法获取";
-            return console.error(err);
-        }
-        // 显示服务器状态
-        document.getElementById("players-now-2").innerHTML = "服务器在线人数: " + status.players.now + "/" + status.players.max;
-    });
-	MinecraftAPI.getServerStatus('ddns.ganshity.top', {
-        port: 36894
-    },function (err, name) {
-        if (err) {
-            // 如果发生错误，显示错误消息
-            document.getElementById("server-name-2").innerHTML = "华中-崇阳-1号服务器信息: 无法获取";
-            return console.error(err);
-        }
-        // 显示服务器状态
-        document.getElementById("server-name-2").innerHTML = "服务器版本: " + name.server.name;
-    });
-</script>
 
-<style>
-		body {
-			background: url("https://pan.ovome.icu/f/Od9t9/21.x264.aac.mp4") no-repeat center center fixed;
-			background-size: cover;
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			filter: alpha(opacity=60);
-			opacity: 1;
-		}
-		
-		video {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			min-width: 100%;
-			min-height: 100%;
-			width: auto;
-			height: auto;
-			z-index: -100;
-			transform: translateX(-50%) translateY(-50%);
-			background: url("https://pan.ovome.icu/f/Od9t9/21.x264.aac.mp4") no-repeat center center;
-			background-size: cover; 
-			transition: 1s opacity;
-		}
+    /* 主体容器样式 */
+    .container {
+      margin: 20px;
+    }
 
-		video::before {
-			content: "";
-			position: absolute;
-			top:0;
-			left:0;
-			right:0;
-			bottom:0;
-			background: rgba(0,0,0,0.5);
-			z-index: -1;
-		}
-		
-</style>
+    /* 服务器状态样式 */
+    .status {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-</script>
+    /* 服务器信息样式 */
+    .server-info {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* 服务器IP样式 */
+    #serverIP {
+      font-size: 16px;
+      color: #3b984d;
+      cursor: pointer;
+    }
+
+    /* 页脚样式 */
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .container h2 {
+      color: #000000;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .container .description {
+      color: #777777;
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 20px 0;
+    }
+
+    .container .rules {
+      color: #EE6666;
+      font-size: 18px;
+      margin-top: 40px;
+    }
+
+    .container .rule {
+      padding-left: 20px;
+      background-image: url(rule-icon.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
+  </style>
 </head>
+
 <body>
-	<div class="banner">
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
-		<video id="bgvid" autoplay loop muted>
-		<source src="https://pan.ovome.icu/f/Od9t9/21.x264.aac.mp4" type="video/mp4">
-	    </video>
-		<h1 class="el-icon-coin">凌云寺</h1>
-		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('sc-cd-1.locyan.com:25684')">西南-成都-1号 sc-cd-1.locyan.com:25684</a></p>
-		<p>IP地址：<a href="javascript:void(0);" onclick="copyToClipboard('ddns.ganshity.top:36894')">华中-崇阳-1号 ddns.ganshity.top:36894</a></p>
-	</div>
-	<div class="container">
-		<h2>服务器简介</h2>
-		<p class="description">欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>
-		<h2>服务器信息</h2>
-		<div id="players-now"></div>
-		<div id="server-name"></div><p>
-		<div id="players-now-2"></div>
-		<div id="server-name-2"></div>
-		<h2 class="rules">服务器规则</h2>
-		<ul class="rule">
-			<li>不使用外挂。</li>
-			<li>不要在他人的建筑物、资源领地进行恶意破坏。</li>
-			<li>不要滥用管理员命令。</li>
-		</ul>
-	</div>
-	
-	<div class="footer">
-		<p>如有问题请联系管理员：QQ:2539171968 / QQ:3464484696</p>
-		<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YiGjQJR9jPqFNI0p080i1YWExqH3rkjq&authKey=I%2FbJGaI2DBGkt6iscMO9b0vf81y0HdIKJgWFI8T2LOEpR8U0Aa2B9Rzr4BP%2BvT36&noverify=0&group_code=819798794">>>>>>>点击加入QQ群<<<<<<</a>
+  <div class="navbar">
+    <h1>我的世界服务器状态</h1>
+  </div>
+  <div class="container">
+    <div class="status" id="status">正在加载状态...</div>
+    <div class="server-info" id="motd">MOTD: </div>
+    <div class="server-info" id="version">版本: </div>
+    <div class="server-info" id="playerCount">玩家数量: </div>
+    <div class="server-info" id="serverIP">服务器IP: </div>
+    <a href="./zt/index.html">其他节点</a>
+    <a href="https://lingyunsi.flowus.cn/">服务器文档</a>
+  </div>
+  <div class="container">
+    <h2>服务器简介</h2>
+    <p class="description">
+      欢迎来到凌云寺！我们是一个专注于Minecraft生存模式的服务器，致力于为玩家提供最纯粹的游戏体验。我们的服务器设置了多种不同的生存模式，满足你不同的挑战需求。来挑战自我，一起在凌云寺里建设自己的世界吧！</p>
+    <h2>服务器规则</h2>
+    <ul>
+      <li>不使用外挂。</li>
+      <li>不要在他人的建筑物、资源领地进行恶意破坏。</li>
+      <li>不要滥用管理员命令。</li>
+    </ul>
+    <h2>关于服务器</h2>
+    <ul>
+      <li>原服主：<a href="https://space.bilibili.com/1429428251">wyh_zkx</a></li>
+      <li>现服主：<a href="https://space.bilibili.com/1199407206">老孙12号</a></li>
+      <li>网页设计：<a href="https://space.bilibili.com/1783868793">没用的小废鼠</a>&<a
+          href="https://chat-shared2.zhile.io/shared.html">CHatGpt</a></li>
+	  <li>QQ群：819798794</li>
+    </ul>
+  </div>
+  <footer>
+    如有问题请联系管理员：
+    QQ: 2539171968 / QQ: 3464484696
+  </footer>
+  
 
+  
+  <script>
+    // 使用 JavaScript 获取服务器状态和信息
+    function getServerStatus() {
+      const serverAddress = 'cn-bj-plc-1.openfrp.top:56674'; // 修改为你的服务器地址和端口
+      fetch(`https://mcapi.us/server/status?ip=${serverAddress}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.online) {
+            updateStatus('服务器在线');
+            updateMotd(data.motd.html);
+            updateVersion(data.server.name);
+            updatePlayerCount(data.players.now, data.players.max);
+            updateServerIP(serverAddress);
+          } else {
+            updateStatus('服务器离线');
+          }
+        })
+        .catch(error => {
+          console.error('获取服务器状态失败:', error);
+          updateStatus('无法获取服务器状态');
+        });
+    }
 
-	</div>
+    // 更新服务器状态显示
+    function updateStatus(status) {
+      const statusElement = document.getElementById('status');
+      statusElement.textContent = `服务器状态: ${status}`;
+    }
+
+    // 更新 MOTD 显示
+    function updateMotd(motd) {
+      const motdElement = document.getElementById('motd');
+      motdElement.textContent = `MOTD: ${motd}`;
+    }
+
+    // 更新服务器版本显示
+    function updateVersion(version) {
+      const versionElement = document.getElementById('version');
+      versionElement.textContent = `版本: ${version}`;
+    }
+
+    // 更新玩家数量显示
+    function updatePlayerCount(playerCount, maxPlayers) {
+      const playerCountElement = document.getElementById('playerCount');
+      playerCountElement.textContent = `玩家数量: ${playerCount}/${maxPlayers}`;
+    }
+
+    // 更新服务器IP显示并添加点击事件处理程序
+    function updateServerIP(serverIP) {
+      const serverIPElement = document.getElementById('serverIP');
+      serverIPElement.textContent = `服务器IP: ${serverIP}`;
+      serverIPElement.addEventListener('click', () => {
+        copyToClipboard(serverIP);
+        alert('服务器IP已复制到剪贴板！');
+      });
+    }
+
+    // 复制文本到剪贴板
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+
+    // 每隔一段时间自动更新服务器状态和信息
+    setInterval(getServerStatus, 5000); // 每5秒更新一次
+
+    // 页面加载完成后立即获取服务器状态和信息
+    document.addEventListener('DOMContentLoaded', getServerStatus);
+  </script>
 </body>
+
 </html>

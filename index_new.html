@@ -8,11 +8,93 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- 引入Bootstrap的JavaScript库 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ymh0000123.github.io/Genshin-Impact-Good-words-and-sentences/script.js" charset="utf-8"></script>
 </head>
 <body class="bg-light">
   <div class="container py-5">
     <h1>测试</h1>
+    <div class="status" id="status">正在加载状态...</div>
+    <div class="server-info" id="motd">MOTD: </div>
+    <div class="server-info" id="version">版本: </div>
+    <div class="server-info" id="playerCount">玩家数量: </div>
+    <div class="server-info" id="serverIP">服务器IP: </div>
+    <a href="./zt/index.html">其他节点</a>
+    <a href="https://lingyunsi.flowus.cn/">服务器文档</a>
   </div>
+
+  <div class="container py-5">
+    <div class="alert alert-primary" role="alert">
+      <span id="ys">加载中...</span>
+    </div>
+    </div>
+    <script>
+      // 使用 JavaScript 获取服务器状态和信息
+      function getServerStatus() {
+        const serverAddress = '111.161.123.233:53346'; // 修改为你的服务器地址和端口
+        fetch(`https://mcapi.us/server/status?ip=${serverAddress}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.online) {
+              updateStatus('服务器在线');
+              updateMotd(data.motd.html);
+              updateVersion(data.server.name);
+              updatePlayerCount(data.players.now, data.players.max);
+              updateServerIP(serverAddress);
+            } else {
+              updateStatus('服务器离线');
+            }
+          })
+          .catch(error => {
+            console.error('获取服务器状态失败:', error);
+            updateStatus('无法获取服务器状态');
+          });
+      }
+  
+      // 更新服务器状态显示
+      function updateStatus(status) {
+        const statusElement = document.getElementById('status');
+        statusElement.textContent = `服务器状态: ${status}`;
+      }
+  
+      // 更新 MOTD 显示
+      function updateMotd(motd) {
+        const motdElement = document.getElementById('motd');
+        motdElement.textContent = `MOTD: ${motd}`;
+      }
+  
+      // 更新服务器版本显示
+      function updateVersion(version) {
+        const versionElement = document.getElementById('version');
+        versionElement.textContent = `版本: ${version}`;
+      }
+  
+      // 更新玩家数量显示
+      function updatePlayerCount(playerCount, maxPlayers) {
+        const playerCountElement = document.getElementById('playerCount');
+        playerCountElement.textContent = `玩家数量: ${playerCount}/${maxPlayers}`;
+      }
+  
+      // 更新服务器IP显示并添加点击事件处理程序
+      function updateServerIP(serverIP) {
+        const serverIPElement = document.getElementById('serverIP');
+        serverIPElement.textContent = `服务器IP: ${serverIP}`;
+        serverIPElement.addEventListener('click', () => {
+          copyToClipboard(serverIP);
+          alert('服务器IP已复制到剪贴板！');
+        });
+      }
+  
+      // 复制文本到剪贴板
+      function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      document.addEventListener('DOMContentLoaded', getServerStatus);
+    </script>
 </body> 
  
 </html>

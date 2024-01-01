@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Info</title>
+<script>
+// 当页面加载完成时执行此函数
+window.onload = function() {
+    // 使用fetch API请求JSON数据
+    fetch('http://state.xiaofeishu.v6.navy/system-info')
+    .then(response => {
+        // 确保响应状态为200
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json(); // 解析JSON
+    })
+    .then(data => {
+        // 更新页面上的元素以显示JSON数据
+        document.getElementById('cpuTemp').innerText = data.cpu_temperature_celsius;
+        document.getElementById('cpuUsage').innerText = data.cpu_usage_percent;
+        document.getElementById('memoryUsage').innerText = data.memory_usage_percent;
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+};
+</script>
+</head>
+<body>
+<h1>System Information</h1>
+<p>CPU Temperature (Celsius): <span id="cpuTemp"></span>°C</p>
+<p>CPU Usage (Percent): <span id="cpuUsage"></span>%</p>
+<p>Memory Usage (Percent): <span id="memoryUsage"></span>%</p>
+</body>
+</html>
